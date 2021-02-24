@@ -1,6 +1,7 @@
 namespace cpp vending_machine
 namespace py vending_machine
 namespace lua vending_machine
+namespace java vending_machine
 
 
 enum ErrorCode {
@@ -52,5 +53,11 @@ service UpdateWeatherService{
 service WeatherService{
 	WeatherType GetWeather(
 		1: i64 city
+	)
+}
+	
+service BeveragePreferenceService{
+	string getBeverage(
+		1: BeverageType btype
 	)
 }
