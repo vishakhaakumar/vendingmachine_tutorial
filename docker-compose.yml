@@ -1,16 +1,17 @@
 version: "3"
 services:
   order-beverage-service:
-    image: probir/vending-machine-microservices:latest
+    image: vishakhakumar/demovend:v2
     hostname: order-beverage-service
     restart: always
     entrypoint: OrderBeverageService
 
   weather-service:
-    image: probir/vending-machine-microservices:latest
+    image: vishakhakumar/demovend:v2
     hostname: weather-service
     restart: always
     entrypoint: WeatherService
+    
   nginx-thrift:
     image: yg397/openresty-thrift:xenial
     hostname: nginx-thrift
