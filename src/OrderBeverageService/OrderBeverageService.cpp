@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
   int beverage_service_port = config_json["beverage-preference-service"]["port"];
   std::string beverage_service_addr = config_json["beverage-preference-service"]["addr"];
   
-  std::cout << "bev config done ..." << std::endl;
+  std::cout << "Config done!..." << std::endl;
  
   // 5: get the client of weather-service
   ClientPool<ThriftClient<WeatherServiceClient>> weather_client_pool(
@@ -56,8 +56,8 @@ int main(int argc, char **argv) {
   ClientPool<ThriftClient<BeveragePreferenceServiceClient>> beverage_client_pool(
       "beverage-preference-service", beverage_service_addr, beverage_service_port, 0, 128, 1000);  
 	  
-	  std::cout << " bev pool done ..." << std::endl;
-
+	  std::cout << "Client done!..." << std::endl;
+	  
   // 6: configure this server
   TThreadedServer server(
       std::make_shared<OrderBeverageServiceProcessor>(
