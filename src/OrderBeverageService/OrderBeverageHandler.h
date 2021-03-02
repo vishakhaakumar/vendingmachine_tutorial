@@ -69,12 +69,18 @@ void OrderBeverageServiceHandler::PlaceOrder(std::string& _return, const int64_t
     _weather_client_pool->Push(weather_client_wrapper);
 	  
    // 3. business logic
-   if(weatherType == WeatherType::type::WARM)
+   if(weatherType == WeatherType::type::WARM){
 	//_return = "Cold beverage";//BeverageType::type::COLD;
 	BeverageType::type beverageType = BeverageType::type::COLD;
+	   std::cout << "Weather is WARM" << std::endl;
+	std::cout << "Beverage type is COLD" << std::endl;
+   }
    else
-	   //_return = "Hot beverage";//BeverageType::type::HOT;
+   { //_return = "Hot beverage";//BeverageType::type::HOT;
    BeverageType::type beverageType = BeverageType::type::HOT;
+	std::cout << "Weather is COLD" << std::endl;
+   std::cout << "Beverage type is HOT" << std::endl;
+   }
    
    //// include new client here ////
 	
@@ -86,20 +92,21 @@ void OrderBeverageServiceHandler::PlaceOrder(std::string& _return, const int64_t
       throw se;
     }
     auto beverage_client = beverage_client_wrapper->GetClient();
+	std::cout << "before call!..." << std::endl;
 	
-	// 2. call the remote procedure : getBeverage
+// 2. call the remote procedure : getBeverage
+	std::string value = "";
+    	std::string& val = value;
     try {
-      std::string& beverageVal = beverage_client->getBeverage(beverageType);
+       beverage_client->getBeverage(beverageType);
+	std::cout << "after call!..." << std::endl;
     } catch (...) {
       _beverage_client_pool->Push(weather_client_wrapper);
       LOG(error) << "Failed to send call getBeverage to beverage-client";
       throw;
     }
-	
-	if(beverageVal == "Helloooo")		
-		_return =" latte";
-	else 
-		_return =" ice soda";
+	_beverage_client_pool->Push(beverage_client_wrapper);
+ _return =val;
 #endif
 }
 
