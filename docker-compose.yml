@@ -1,16 +1,22 @@
 version: "3"
 services:
   order-beverage-service:
-    image: vishakhakumar/demovend:v2
+    image: vishakhakumar/newvendingimg:v1
     hostname: order-beverage-service
     restart: always
     entrypoint: OrderBeverageService
 
   weather-service:
-    image: vishakhakumar/demovend:v2
+    image: vishakhakumar/newvendingimg:v1
     hostname: weather-service
     restart: always
     entrypoint: WeatherService
+    
+  beverage-preference-service:
+    image: vishakhakumar/newvendingimg:v1
+    hostname: beverage-preference-service
+    restart: always
+    entrypoint: BeveragePreferenceService
     
   nginx-thrift:
     image: yg397/openresty-thrift:xenial
