@@ -36,27 +36,24 @@ void BeveragePreferenceHandler::getBeverage(std::string& _return, const Beverage
      std::cout << "Get beverage called!..." << std::endl;
      std::vector <std::string> hotlist {"cappuccino","latte","espresso"};
      std::vector <std::string> coldlist {"lemonade","ice tea","soda"};
+     std::string strval ="";
  
    // randomly select a beverage
   if(btype == BeverageType::type::COLD){
-        //int index = random.Next(coldlist.Count);
-        // _return = coldlist[index];
+        strval = coldlist[rand() % 3];
    std::cout << "COLDDD" << std::endl
         _return = coldlist[0];
 
   }else{
-        //int index = random.Next(hotlist.Count);
-        //_return = hotlist[index];
+       strval = hotlist[rand() % 3];
    std::cout << "HOTTT" << std::endl
         _return = hotlist[1];
 }
-    _return = "blah";
-    // randomly select a weather
-    //return "beverage selection here";
+     _return = strval;
 }
 
 } // namespace vending_machine
 
 
-#endif //VENDING_MACHINE_MICROSERVICES_WEATHERHANDLER_H
+#endif //VENDING_MACHINE_MICROSERVICES_BEVERAGEHANDLER_H
 
