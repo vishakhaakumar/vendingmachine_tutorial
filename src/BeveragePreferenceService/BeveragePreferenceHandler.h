@@ -5,6 +5,7 @@
 #include <string>
 #include <regex>
 #include <future>
+#include <vector>
 
 #include "../../gen-cpp/BeveragePreferenceService.h"
 
@@ -32,9 +33,26 @@ BeveragePreferenceHandler::BeveragePreferenceHandler() {
 void BeveragePreferenceHandler::getBeverage(std::string& _return, const BeverageType::type btype) {
      // Your implementation goes here
      printf("GetBeverage\n");
+     std::cout << "Get beverage called!..." << std::endl;
+     std::vector <std::string> hotlist {"cappuccino","latte","espresso"};
+     std::vector <std::string> coldlist {"lemonade","ice tea","soda"};
+ 
+   // randomly select a beverage
+  if(btype == BeverageType::type::COLD){
+        //int index = random.Next(coldlist.Count);
+        // _return = coldlist[index];
+   std::cout << "COLDDD" << std::endl
+        _return = coldlist[0];
 
+  }else{
+        //int index = random.Next(hotlist.Count);
+        //_return = hotlist[index];
+   std::cout << "HOTTT" << std::endl
+        _return = hotlist[1];
+}
+    _return = "blah";
     // randomly select a weather
-    return "beverage selection here";
+    //return "beverage selection here";
 }
 
 } // namespace vending_machine
