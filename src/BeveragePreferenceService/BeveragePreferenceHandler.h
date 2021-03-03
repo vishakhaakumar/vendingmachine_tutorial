@@ -41,12 +41,12 @@ void BeveragePreferenceHandler::getBeverage(std::string& _return, const Beverage
    // randomly select a beverage
   if(btype == BeverageType::type::COLD){
         strval = coldlist[rand() % 3];
-   std::cout << "COLDDD" << std::endl
+   std::cout << "COLDDD" << std::endl;
         _return = coldlist[0];
 
   }else{
        strval = hotlist[rand() % 3];
-   std::cout << "HOTTT" << std::endl
+   std::cout << "HOTTT" << std::endl;
         _return = hotlist[1];
 }
      _return = strval;
